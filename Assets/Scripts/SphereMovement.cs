@@ -1,15 +1,16 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class SphereMovement : MonoBehaviour
+public class SphereMovement : BaseAnimation
 {
-    [SerializeField] private float _duration;
     [SerializeField] private Vector3 _distantMove;
 
-    private LoopType _loopType = LoopType.Yoyo;
-    private int _loop = -1;
-
     private void Start()
+    {
+        StartAnimation();
+    }
+
+    protected override void StartAnimation()
     {
         transform.DOMove(_distantMove, _duration).SetLoops(_loop, _loopType);
     }

@@ -2,19 +2,22 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class TextAnimation : MonoBehaviour
+public class TextAnimation : BaseAnimation
 {
     [SerializeField] private Text _text;
 
-    private LoopType _loopType = LoopType.Restart;
-    private int _loop = -1;
+    private new LoopType _loopType = LoopType.Restart;
     private string _changeText = "Замена";
     private string _addText = "Добавление";
-    private float _duration = 3f;
     private bool _rechText = true;
     private ScrambleMode _scrambleMode = ScrambleMode.All;
 
     private void Start()
+    {
+        StartAnimation();
+    }
+
+    protected override void StartAnimation()
     {
         Sequence textSequence = DOTween.Sequence();
 
